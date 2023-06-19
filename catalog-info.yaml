@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: terraform-aws-vpc
+  description: AWS VPC terraform module
+  annotations:
+    github.com/project-slug: developertown/terraform-aws-vpc
+  tags:
+    - terraform
+    - aws
+    - vpc
+    - container
+spec:
+  type: terraform-module
+  lifecycle: production
+  owner: dt-devops
