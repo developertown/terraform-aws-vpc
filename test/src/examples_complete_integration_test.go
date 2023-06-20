@@ -114,9 +114,9 @@ func TestExamplesCompleteDisabled(t *testing.T) {
 	testStructure.RunTestStage(t, "apply", func() {
 		terraformOptions := &terraform.Options{
 			// The path to where our Terraform code is located
-			TerraformDir: tempTestFolder,
-			Upgrade:      true,
-			// Variables to pass to our Terraform code using -var-file options
+			TerraformDir:    tempTestFolder,
+			Upgrade:         true,
+			TerraformBinary: "terragrunt",
 			Vars: map[string]interface{}{
 				"enabled": "false",
 			},
