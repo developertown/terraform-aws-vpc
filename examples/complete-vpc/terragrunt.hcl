@@ -3,7 +3,7 @@ include {
 }
 
 terraform {
-  source = "../..//modules/complete"
+  source = "..//modules/complete"
 }
 
 inputs = {

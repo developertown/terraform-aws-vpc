@@ -14,7 +14,7 @@ locals {
 ################################################################################
 
 module "aws_vpc" {
-  source = "../../"
+  source = "../../.."
 
   count   = var.enabled ? 1 : 0
   enabled = var.enabled
