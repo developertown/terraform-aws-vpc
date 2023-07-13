@@ -1,5 +1,5 @@
 locals {
-  enabled = var.enabled
+  enabled = var.enabled ? var.enabled : var.create_vpc ? var.create_vpc : false
   name    = "${var.name}-${var.environment}%{if var.suffix != ""}-${var.suffix}%{endif}"
 
   tags = merge({
@@ -13,7 +13,8 @@ module "aws_vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.0.0"
 
-  count = local.enabled ? 1 : 0
+  count      = local.enabled ? 1 : 0
+  create_vpc = local.enabled
 
   name = local.name
   cidr = var.cidr

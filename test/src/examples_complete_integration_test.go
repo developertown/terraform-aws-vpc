@@ -32,7 +32,7 @@ func TestExamplesComplete(t *testing.T) {
 
 	rootFolder := "../../"
 
-	terraformFolderRelativeToRoot := "examples/complete"
+	terraformFolderRelativeToRoot := "examples/complete-vpc"
 
 	tempTestFolder := testStructure.CopyTerraformFolderToTemp(t, rootFolder, terraformFolderRelativeToRoot)
 
@@ -53,8 +53,9 @@ func TestExamplesComplete(t *testing.T) {
 
 		terraformOptions := &terraform.Options{
 			// The path to where our Terraform code is located
-			TerraformDir: tempTestFolder,
-			Upgrade:      true,
+			TerraformDir:    tempTestFolder,
+			TerraformBinary: "terragrunt",
+			Upgrade:         true,
 			// Variables to pass to our Terraform code using -var-file options
 			Vars: map[string]interface{}{
 				"enabled": "true",
@@ -102,7 +103,7 @@ func TestExamplesCompleteDisabled(t *testing.T) {
 	t.Parallel()
 
 	rootFolder := "../../"
-	terraformFolderRelativeToRoot := "examples/complete"
+	terraformFolderRelativeToRoot := "examples/complete-vpc"
 	// Uncomment these when doing local testing if you need to skip any stages.
 	//os.Setenv("SKIP_apply", "true")
 	//os.Setenv("SKIP_destroy", "true")
@@ -113,9 +114,9 @@ func TestExamplesCompleteDisabled(t *testing.T) {
 	testStructure.RunTestStage(t, "apply", func() {
 		terraformOptions := &terraform.Options{
 			// The path to where our Terraform code is located
-			TerraformDir: tempTestFolder,
-			Upgrade:      true,
-			// Variables to pass to our Terraform code using -var-file options
+			TerraformDir:    tempTestFolder,
+			Upgrade:         true,
+			TerraformBinary: "terragrunt",
 			Vars: map[string]interface{}{
 				"enabled": "false",
 			},

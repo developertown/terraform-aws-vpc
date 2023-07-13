@@ -19,14 +19,15 @@ func TestVPCCompleteValidation(t *testing.T) {
 
 	rootFolder := "../../"
 	randID := strings.ToLower(random.UniqueId())
-	terraformFolderRelativeToRoot := "examples/complete"
+	terraformFolderRelativeToRoot := "examples/complete-vpc"
 
 	tempTestFolder := testStructure.CopyTerraformFolderToTemp(t, rootFolder, terraformFolderRelativeToRoot)
 
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
-		TerraformDir: tempTestFolder,
-		Upgrade:      true,
+		TerraformDir:    tempTestFolder,
+		TerraformBinary: "terragrunt",
+		Upgrade:         true,
 		// Variables to pass to our Terraform code using -var-file options
 		Vars: map[string]interface{}{
 			"enabled": "true",
