@@ -22,7 +22,7 @@ remote_state {
 generate "provider" {
   path      = "provider-aws.tf"
   if_exists = "skip" # Allow modules to override provider settings
-  contents = <<EOF
+  contents  = <<EOF
 provider "aws" {
   region = var.region
 
